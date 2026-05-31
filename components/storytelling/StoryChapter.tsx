@@ -1,5 +1,29 @@
-'use client';
-import Container from '../ui/Container';
-export default function StoryChapter({title,subtitle,children}:{title:string;subtitle?:string;children?:React.ReactNode}){
-return (<section className="min-h-screen flex items-center py-24"><Container><p>{subtitle}</p><h2>{title}</h2>{children}</Container></section>);
+interface StoryChapterProps {
+  title: string;
+  subtitle: string;
+  content: string;
+}
+
+export default function StoryChapter({
+  title,
+  subtitle,
+  content,
+}: StoryChapterProps) {
+  return (
+    <section className="min-h-screen flex items-center">
+      <div className="max-w-4xl mx-auto px-8">
+        <p className="uppercase tracking-[0.3em] text-rosegold">
+          {subtitle}
+        </p>
+
+        <h2 className="text-5xl mt-4">
+          {title}
+        </h2>
+
+        <p className="mt-8 text-lg leading-8 text-neutral-300">
+          {content}
+        </p>
+      </div>
+    </section>
+  );
 }

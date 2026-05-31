@@ -1,0 +1,1 @@
+'use client'; export default function Typewriter(){ return <div>Typewriter Component</div>}

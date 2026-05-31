@@ -1,6 +1,6 @@
 import "../styles/theme.css";
 import "../styles/animations.css";
-import "../app/globals.css";
+import "./globals.css";
 
 import type { Metadata } from "next";
 

@@ -1,0 +1,2 @@
+import StoryChapter from './StoryChapter';
+export default function ScrollNarrative(){return<><StoryChapter title='How It Began' subtitle='Chapter 01'/><StoryChapter title='The Proposal' subtitle='Chapter 02'/><StoryChapter title='The Celebration' subtitle='Chapter 03'/><StoryChapter title='Wedding Day' subtitle='Chapter 04'/><StoryChapter title='Forever Begins Here' subtitle='Chapter 05'/></>}

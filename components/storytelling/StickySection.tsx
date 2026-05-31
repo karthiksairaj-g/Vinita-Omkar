@@ -1,0 +1,1 @@
+export default function StickySection({children}:{children:React.ReactNode}){return <section className='h-[200vh] relative'><div className='sticky top-0 h-screen'>{children}</div></section>}

@@ -1,0 +1,2 @@
+'use client'; import {useEffect,useState} from 'react';
+export default function ScrollProgress(){const[p,setP]=useState(0);useEffect(()=>{const s=()=>{const h=document.documentElement.scrollHeight-window.innerHeight;setP((window.scrollY/h)*100)};window.addEventListener('scroll',s);return()=>window.removeEventListener('scroll',s)},[]);return <div className='fixed top-0 left-0 h-1 bg-rosegold z-50' style={{width:`${p}%`}}/>}

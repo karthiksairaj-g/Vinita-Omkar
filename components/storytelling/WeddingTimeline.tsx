@@ -1,0 +1,1 @@
+export default function WeddingTimeline(){const e=['How It Began','Proposal','Celebration','Wedding Day','Forever Begins Here'];return <div>{e.map(x=><div key={x}>{x}</div>)}</div>}

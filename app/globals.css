@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/* Wedding Theme Variables */
+:root {
+  --rosegold: #B76E79;
+  --champagne: #F7E7CE;
+  --ivory: #FFF8F0;
+  --midnight: #0F0F14;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--midnight);
+  color: white;
+  margin: 0;
+  padding: 0;
+}

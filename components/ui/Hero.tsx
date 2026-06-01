@@ -6,21 +6,26 @@ import { gsap } from "@/lib/gsap";
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
 
+  const backgroundRef = useRef<HTMLDivElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const dateRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Intro animation
-      const tl = gsap.timeline();
+      // Intro Animation
+      const intro = gsap.timeline();
 
-      tl.from(titleRef.current, {
-        opacity: 0,
-        y: 80,
-        duration: 1.4,
-        ease: "power3.out",
-      })
+      intro
+        .from(titleRef.current, {
+          opacity: 0,
+          y: 80,
+          duration: 1.4,
+          ease: "power3.out",
+        })
         .from(
           subtitleRef.current,
           {
@@ -40,7 +45,7 @@ export default function Hero() {
           "-=0.6"
         );
 
-      // Scroll animation
+      // Scroll Story Timeline
       gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
@@ -48,32 +53,74 @@ export default function Hero() {
           end: "+=250%",
           scrub: 1.5,
           pin: true,
-          anticipatePin : 1,
+          anticipatePin: 1,
         },
       })
-        .to(titleRef.current, {
+
+      // Background Depth
+      .to(
+        backgroundRef.current,
+        {
+          scale: 1.1,
+          ease: "none",
+        },
+        0
+      )
+
+      // Glow Expansion
+      .to(
+        glowRef.current,
+        {
+          scale: 1.4,
+          opacity: 0.2,
+          ease: "none",
+        },
+        0
+      )
+
+      // Hero Title
+      .to(
+        titleRef.current,
+        {
           scale: 1.08,
           y: -80,
-          ease : "none",
-        })
-        .to(
-          subtitleRef.current,
-          {
-            opacity: 0,
-            y: -40,
-            ease : "none",
-          },
-          0
-        )
-        .to(
-          dateRef.current,
-          {
-            opacity: 0,
-            y: -20,
-            ease : "none",
-          },
-          0
-        );
+          ease: "none",
+        },
+        0
+      )
+
+      // Subtitle Fade
+      .to(
+        subtitleRef.current,
+        {
+          opacity: 0,
+          y: -40,
+          ease: "none",
+        },
+        0
+      )
+
+      // Date Fade
+      .to(
+        dateRef.current,
+        {
+          opacity: 0,
+          y: -20,
+          ease: "none",
+        },
+        0
+      )
+
+      // Entire Hero Dissolves
+      .to(
+        contentRef.current,
+        {
+          opacity: 0,
+          y: -120,
+          ease: "none",
+        },
+        0.6
+      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -91,8 +138,9 @@ export default function Hero() {
         justify-center
       "
     >
-      {/* Background Gradient */}
+      {/* Background Layer */}
       <div
+        ref={backgroundRef}
         className="
           absolute
           inset-0
@@ -103,20 +151,29 @@ export default function Hero() {
         "
       />
 
-      {/* Glow Effect */}
+      {/* Glow Layer */}
       <div
+        ref={glowRef}
         className="
           absolute
-          w-150
-          h-150
+          w-[600px]
+          h-[600px]
           rounded-full
           bg-rosegold/10
           blur-3xl
         "
       />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6">
+      {/* Hero Content */}
+      <div
+        ref={contentRef}
+        className="
+          relative
+          z-10
+          text-center
+          px-6
+        "
+      >
         <p className="uppercase tracking-[0.5em] text-champagne">
           Our Wedding Story
         </p>

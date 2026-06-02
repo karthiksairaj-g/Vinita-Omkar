@@ -18,3 +18,35 @@ body {
   margin: 0;
   padding: 0;
 }
+
+
+@keyframes voiceWave {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.voice-wave-bar {
+  animation: voiceWave 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.artifact-shimmer {
+  animation: shimmer 4s linear infinite;
+}

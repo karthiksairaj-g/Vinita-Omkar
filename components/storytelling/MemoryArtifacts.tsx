@@ -1,5 +1,23 @@
 "use client";
 
+import VoiceWave from "./VoiceWave";
+
+const artifactCardClass = `
+  group
+  rounded-[32px]
+  border
+  border-white/10
+  bg-white/[0.03]
+  backdrop-blur-sm
+  shadow-[0_0_80px_rgba(255,215,180,0.08)]
+  transition-all
+  duration-700
+  hover:-translate-y-2
+  hover:scale-[1.02]
+  hover:border-rosegold/30
+  hover:shadow-[0_0_120px_rgba(255,215,180,0.18)]
+`;
+
 export default function MemoryArtifacts() {
   return (
     <div
@@ -13,22 +31,13 @@ export default function MemoryArtifacts() {
     >
       {/* Photo Memory Artifact */}
       <div
-        className="
-          group
+        className={`
+          ${artifactCardClass}
           relative
           overflow-hidden
-          rounded-[32px]
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-sm
           p-8
           min-h-[340px]
-          shadow-[0_0_80px_rgba(255,215,180,0.08)]
-          transition-all
-          duration-500
-          hover:border-rosegold/30
-        "
+        `}
       >
         <div
           className="
@@ -39,7 +48,7 @@ export default function MemoryArtifacts() {
             to-transparent
             opacity-0
             transition-opacity
-            duration-500
+            duration-700
             group-hover:opacity-100
           "
         />
@@ -91,22 +100,13 @@ export default function MemoryArtifacts() {
 
       {/* Quote Artifact */}
       <div
-        className="
-          group
-          rounded-[32px]
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-sm
+        className={`
+          ${artifactCardClass}
           p-10
           min-h-[340px]
           flex
           items-center
-          shadow-[0_0_80px_rgba(255,215,180,0.08)]
-          transition-all
-          duration-500
-          hover:border-rosegold/30
-        "
+        `}
       >
         <div>
           <p
@@ -121,6 +121,20 @@ export default function MemoryArtifacts() {
             Memory Quote
           </p>
 
+          <div
+            className="
+              text-7xl
+              leading-none
+              text-rosegold/20
+              transition-all
+              duration-700
+              group-hover:scale-110
+              group-hover:text-rosegold/30
+            "
+          >
+            “
+          </div>
+
           <blockquote
             className="
               text-3xl
@@ -130,9 +144,9 @@ export default function MemoryArtifacts() {
               leading-relaxed
             "
           >
-            “Every love story is beautiful,
+            Every love story is beautiful,
             <br />
-            but this one is our favorite.”
+            but this one is our favorite.
           </blockquote>
 
           <p
@@ -149,22 +163,13 @@ export default function MemoryArtifacts() {
         </div>
       </div>
 
-      {/* Date / Location Artifact */}
+      {/* Date Artifact */}
       <div
-        className="
-          group
-          rounded-[32px]
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-sm
+        className={`
+          ${artifactCardClass}
           p-10
           min-h-[280px]
-          shadow-[0_0_80px_rgba(255,215,180,0.08)]
-          transition-all
-          duration-500
-          hover:border-rosegold/30
-        "
+        `}
       >
         <p
           className="
@@ -176,6 +181,29 @@ export default function MemoryArtifacts() {
         >
           Wedding Day
         </p>
+
+        <div
+          className="
+            relative
+            mt-6
+            h-px
+            overflow-hidden
+            bg-white/10
+          "
+        >
+          <div
+            className="
+              artifact-shimmer
+              absolute
+              inset-y-0
+              w-24
+              bg-gradient-to-r
+              from-transparent
+              via-rosegold/70
+              to-transparent
+            "
+          />
+        </div>
 
         <div className="mt-10">
           <h3
@@ -204,20 +232,11 @@ export default function MemoryArtifacts() {
 
       {/* Voice Note Artifact */}
       <div
-        className="
-          group
-          rounded-[32px]
-          border
-          border-white/10
-          bg-white/[0.03]
-          backdrop-blur-sm
+        className={`
+          ${artifactCardClass}
           p-10
           min-h-[280px]
-          shadow-[0_0_80px_rgba(255,215,180,0.08)]
-          transition-all
-          duration-500
-          hover:border-rosegold/30
-        "
+        `}
       >
         <p
           className="
@@ -243,6 +262,11 @@ export default function MemoryArtifacts() {
               justify-center
               text-lg
               text-ivory
+              transition-all
+              duration-500
+              group-hover:scale-110
+              group-hover:border-rosegold/30
+              animate-pulse
             "
           >
             ▶
@@ -268,6 +292,10 @@ export default function MemoryArtifacts() {
               A message from the future.
             </p>
           </div>
+        </div>
+
+        <div className="mt-8">
+          <VoiceWave />
         </div>
 
         <div

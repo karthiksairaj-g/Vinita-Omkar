@@ -13,10 +13,6 @@ export default function Home() {
 
       <ScrollScene>
 
-  {/* <PinnedChapter>
-    <Hero />
-  </PinnedChapter> */}
-   
    <Hero />
 
   <ChapterTransition
@@ -24,24 +20,36 @@ export default function Home() {
   />
 
   <StoryChapter
-    title="Two Lives. One Story."
-  />
+  title="Two Lives. One Story."
+  intro="Some stories begin quietly. Two people living separate lives, never imagining destiny was already writing their story."
+  memoryLabel="Memory #01"
+  memoryCaption="A chance encounter."
+  outro="Then came a conversation. A laugh. A moment that would change everything."
+/>
 
   <ChapterTransition
     title="The Proposal"
   />
 
   <StoryChapter
-    title="A Moment Forever Remembered"
-  />
+  title="A Moment Forever Remembered"
+  intro="Every love story has a moment when everything changes."
+  memoryLabel="The Proposal"
+  memoryCaption="One question. One answer. Forever."
+  outro="A memory that would become the beginning of a new chapter."
+/>
 
   <ChapterTransition
     title="The Celebration"
   />
 
   <StoryChapter
-    title="Surrounded By Love"
-  />
+  title="Surrounded By Love"
+  intro="Family. Friends. Laughter. Celebration."
+  memoryLabel="The Gathering"
+  memoryCaption="Every smile tells a story."
+  outro="Together they celebrate the journey that brought them here."
+/>
 
 </ScrollScene>
 

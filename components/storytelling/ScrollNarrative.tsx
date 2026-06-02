@@ -1,4 +1,5 @@
 import StoryChapter from "./StoryChapter";
+import ChapterTransition from "./ChapterTransition";
 import WeddingTimeline from "./WeddingTimeline";
 
 export default function ScrollNarrative() {
@@ -13,6 +14,8 @@ export default function ScrollNarrative() {
         outro="A small moment that would change everything."
       />
 
+      <ChapterTransition title="A Promise" />
+
       <StoryChapter
         subtitle="Chapter Two"
         title="The Proposal"
@@ -21,6 +24,8 @@ export default function ScrollNarrative() {
         memoryCaption="Will you marry me?"
         outro="A memory that became the start of a new chapter."
       />
+
+      <ChapterTransition title="Together" />
 
       <StoryChapter
         subtitle="Chapter Three"
@@ -31,6 +36,8 @@ export default function ScrollNarrative() {
         outro="A celebration of love shared by everyone."
       />
 
+      <ChapterTransition title="The Day Arrives" />
+
       <StoryChapter
         subtitle="Chapter Four"
         title="Wedding Day"
@@ -39,6 +46,8 @@ export default function ScrollNarrative() {
         memoryCaption="Two hearts. One promise."
         outro="The day their forever officially began."
       />
+
+      <ChapterTransition title="Forever" />
 
       <StoryChapter
         subtitle="Chapter Five"

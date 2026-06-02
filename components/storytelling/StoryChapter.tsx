@@ -254,8 +254,8 @@ export default function StoryChapter({
                 <p
                   className="
                     mt-6
-                    text-3xl
-                    md:text-4xl
+                    text-4xl
+                    md:text-5xl
                     font-serif
                     text-ivory
                   "

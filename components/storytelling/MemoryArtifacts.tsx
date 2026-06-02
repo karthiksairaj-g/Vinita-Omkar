@@ -12,8 +12,6 @@ const artifactCardClass = `
   shadow-[0_0_80px_rgba(255,215,180,0.08)]
   transition-all
   duration-700
-  hover:-translate-y-2
-  hover:scale-[1.02]
   hover:border-rosegold/30
   hover:shadow-[0_0_120px_rgba(255,215,180,0.18)]
 `;
@@ -37,6 +35,8 @@ export default function MemoryArtifacts() {
           overflow-hidden
           p-8
           min-h-[340px]
+          hover:-translate-y-3
+          hover:scale-[1.025]
         `}
       >
         <div
@@ -80,6 +80,10 @@ export default function MemoryArtifacts() {
               text-sm
               tracking-[0.2em]
               uppercase
+              transition-all
+              duration-700
+              group-hover:-translate-y-2
+              group-hover:scale-[1.02]
             "
           >
             Future Photograph
@@ -106,6 +110,8 @@ export default function MemoryArtifacts() {
           min-h-[340px]
           flex
           items-center
+          hover:-translate-y-1
+          hover:rotate-[0.5deg]
         `}
       >
         <div>
@@ -169,6 +175,7 @@ export default function MemoryArtifacts() {
           ${artifactCardClass}
           p-10
           min-h-[280px]
+          hover:-translate-y-1
         `}
       >
         <p
@@ -234,6 +241,7 @@ export default function MemoryArtifacts() {
       <div
         className={`
           ${artifactCardClass}
+          artifact-voice-reveal
           p-10
           min-h-[280px]
         `}

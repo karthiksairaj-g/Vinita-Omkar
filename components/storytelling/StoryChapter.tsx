@@ -4,6 +4,8 @@ import { useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@/hooks/useGSAP";
 import ParallaxLayer from "./ParallaxLayer";
+import MemoryArtifacts from "./MemoryArtifacts";
+
 
 interface StoryChapterProps {
   title: string;
@@ -281,28 +283,9 @@ export default function StoryChapter({
         )}
 
         <ParallaxLayer speed={0.12}>
-          <div
-            className="
-              chapter-media
-              mt-24
-              aspect-[16/9]
-              rounded-[32px]
-              border
-              border-white/10
-              bg-white/[0.03]
-              backdrop-blur-sm
-              flex
-              items-center
-              justify-center
-              text-neutral-500
-              text-sm
-              tracking-[0.25em]
-              uppercase
-            "
-          >
-            Future Memory Experience
-          </div>
+          <MemoryArtifacts />
         </ParallaxLayer>
+        
       </div>
     </section>
   );

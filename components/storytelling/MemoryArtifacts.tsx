@@ -1,5 +1,12 @@
 "use client";
 
+import { useRef } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+
 import VoiceWave from "./VoiceWave";
 
 const artifactCardClass = `
@@ -17,8 +24,55 @@ const artifactCardClass = `
 `;
 
 export default function MemoryArtifacts() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  /**
+   * Phase 2.8 Scroll Motion
+   *
+   * Photo  -> strongest movement
+   * Quote  -> subtle rotation
+   * Date   -> gentle rise
+   * Voice  -> delayed reveal
+   */
+
+  const photoY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [24, -24]
+  );
+
+  const quoteRotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [-0.3, 0.8]
+  );
+
+  const dateY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [10, -10]
+  );
+
+  const voiceY = useTransform(
+    scrollYProgress,
+    [0, 0.35],
+    [24, 0]
+  );
+
+  const voiceOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.35],
+    [0, 1]
+  );
+
   return (
     <div
+      ref={containerRef}
       className="
         chapter-media
         mt-24
@@ -28,7 +82,9 @@ export default function MemoryArtifacts() {
       "
     >
       {/* Photo Memory Artifact */}
-      <div
+
+      <motion.div
+        style={{ y: photoY }}
         className={`
           ${artifactCardClass}
           relative
@@ -53,13 +109,13 @@ export default function MemoryArtifacts() {
           "
         />
 
-        <div className="relative h-full flex flex-col">
+        <div className="relative flex h-full flex-col">
           <p
             className="
+              text-xs
               uppercase
               tracking-[0.35em]
               text-rosegold
-              text-xs
             "
           >
             Memory Frame
@@ -76,10 +132,10 @@ export default function MemoryArtifacts() {
               flex
               items-center
               justify-center
-              text-neutral-500
               text-sm
-              tracking-[0.2em]
               uppercase
+              tracking-[0.2em]
+              text-neutral-500
               transition-all
               duration-700
               group-hover:-translate-y-2
@@ -100,14 +156,18 @@ export default function MemoryArtifacts() {
             Vinita & Omkar
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Quote Artifact */}
-      <div
+
+      <motion.div
+        style={{
+          rotate: quoteRotate,
+        }}
         className={`
           ${artifactCardClass}
-          p-10
           min-h-[340px]
+          p-10
           flex
           items-center
           hover:-translate-y-1
@@ -117,11 +177,11 @@ export default function MemoryArtifacts() {
         <div>
           <p
             className="
+              mb-8
+              text-xs
               uppercase
               tracking-[0.35em]
               text-rosegold
-              text-xs
-              mb-8
             "
           >
             Memory Quote
@@ -146,8 +206,8 @@ export default function MemoryArtifacts() {
               text-3xl
               md:text-4xl
               font-serif
-              text-ivory
               leading-relaxed
+              text-ivory
             "
           >
             Every love story is beautiful,
@@ -158,32 +218,36 @@ export default function MemoryArtifacts() {
           <p
             className="
               mt-8
-              text-neutral-400
-              tracking-[0.2em]
-              uppercase
               text-xs
+              uppercase
+              tracking-[0.2em]
+              text-neutral-400
             "
           >
             Future Memory
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Date Artifact */}
-      <div
+
+      <motion.div
+        style={{
+          y: dateY,
+        }}
         className={`
           ${artifactCardClass}
-          p-10
           min-h-[280px]
+          p-10
           hover:-translate-y-1
         `}
       >
         <p
           className="
+            text-xs
             uppercase
             tracking-[0.35em]
             text-rosegold
-            text-xs
           "
         >
           Wedding Day
@@ -227,31 +291,35 @@ export default function MemoryArtifacts() {
           <p
             className="
               mt-8
-              text-neutral-300
-              leading-8
               max-w-sm
+              leading-8
+              text-neutral-300
             "
           >
             A memory waiting to become timeless.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Voice Note Artifact */}
-      <div
+
+      <motion.div
+        style={{
+          y: voiceY,
+          opacity: voiceOpacity,
+        }}
         className={`
           ${artifactCardClass}
-          artifact-voice-reveal
-          p-10
           min-h-[280px]
+          p-10
         `}
       >
         <p
           className="
+            text-xs
             uppercase
             tracking-[0.35em]
             text-rosegold
-            text-xs
           "
         >
           Voice Note
@@ -260,21 +328,21 @@ export default function MemoryArtifacts() {
         <div className="mt-10 flex items-center gap-5">
           <div
             className="
+              flex
               h-14
               w-14
+              items-center
+              justify-center
               rounded-full
               border
               border-white/10
-              flex
-              items-center
-              justify-center
               text-lg
               text-ivory
               transition-all
               duration-500
+              animate-pulse
               group-hover:scale-110
               group-hover:border-rosegold/30
-              animate-pulse
             "
           >
             ▶
@@ -283,9 +351,9 @@ export default function MemoryArtifacts() {
           <div>
             <p
               className="
-                text-ivory
                 text-lg
                 font-medium
+                text-ivory
               "
             >
               00:00
@@ -317,7 +385,7 @@ export default function MemoryArtifacts() {
             to-transparent
           "
         />
-      </div>
+      </motion.div>
     </div>
   );
 }

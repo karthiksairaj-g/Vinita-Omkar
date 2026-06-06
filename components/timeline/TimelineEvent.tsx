@@ -18,6 +18,7 @@ export default function TimelineEvent({
   align,
 }: TimelineEventProps) {
   const initialX = align === "left" ? -40 : 40;
+  const contentScale = isLast ? 0.94 : 1;
 
   return (
     <motion.div
@@ -25,11 +26,13 @@ export default function TimelineEvent({
         opacity: 0,
         x: initialX,
         y: 30,
+        scale: contentScale,
       }}
       whileInView={{
         opacity: 1,
         x: 0,
         y: 0,
+        scale: 1,
       }}
       viewport={{
         once: false,
@@ -51,10 +54,25 @@ export default function TimelineEvent({
       {/* Content Side */}
 
       <div
-        className={`
-          ${align === "left" ? "md:text-right" : "md:order-2"}
-        `}
-      >
+  className={`
+    ${align === "left" ? "md:text-right" : "md:order-2"}
+    ${isLast ? "relative" : ""}
+  `}
+>
+    {isLast && (
+  <div
+    className="
+      absolute
+      inset-0
+      bg-gradient-to-r
+      from-rose-300/5
+      via-amber-100/5
+      to-transparent
+      blur-3xl
+      pointer-events-none
+    "
+  />
+)}
         <p
           className="
             uppercase
@@ -68,13 +86,14 @@ export default function TimelineEvent({
         </p>
 
         <h3
-          className="
-            text-4xl
-            md:text-5xl
-            font-light
-            mb-6
-          "
-        >
+  className={`
+    text-4xl
+    md:text-5xl
+    font-light
+    mb-6
+    ${isLast ? "text-rose-100" : ""}
+  `}
+>
           {title}
         </h3>
 
@@ -124,14 +143,24 @@ export default function TimelineEvent({
         "
       >
         {isLast ? (
-          <div className="relative">
+          <motion.div
+  className="relative"
+  animate={{
+    scale: [1, 1.08, 1],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+>
             <div
               className="
                 absolute
                 inset-0
-                bg-rose-300/30
-                blur-2xl
-                scale-[2.5]
+                bg-rose-300/40
+                blur-3xl
+                scale-[3]
                 rounded-full
               "
             />
@@ -145,7 +174,7 @@ export default function TimelineEvent({
                 bg-rose-200
               "
             />
-          </div>
+          </motion.div>
         ) : (
           <div
             className="

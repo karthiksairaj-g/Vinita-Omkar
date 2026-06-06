@@ -21,7 +21,7 @@ export default function WeddingTimeline() {
   return (
     <section className="py-32">
       <h2 className="text-center text-5xl mb-20">
-        Our Journey
+        A Journey Worth Celebrating
       </h2>
 
       <div className="max-w-4xl mx-auto">

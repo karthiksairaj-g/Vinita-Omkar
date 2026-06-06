@@ -1,18 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
+
 import TimelineEvent from "@/components/timeline/TimelineEvent";
 import { timelineEvents } from "@/components/timeline/timelineData";
 
 export default function WeddingTimeline() {
+
+  const timelineRef = useRef<HTMLElement>(null);
+
+    const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 70%", "end 80%"],
+    });
+
+    const scaleY = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 30,
+    mass: 0.5,
+    });
+
   return (
     <section
-      className="
-        relative
-        pt-56 pb-40
-        px-6
-      "
-    >
+  ref={timelineRef}
+  className="
+    relative
+    pt-56
+    pb-40
+    px-6
+  "
+>
       {/* Intro */}
 
       <motion.div
@@ -80,23 +98,46 @@ export default function WeddingTimeline() {
       <div className="relative max-w-6xl mx-auto">
         {/* Vertical Spine */}
 
-        <div
-          className="
-            hidden
-            md:block
-            absolute
-            left-1/2
-            top-0
-            bottom-0
-            w-px
-            -translate-x-1/2
-            bg-gradient-to-b
-           from-rose-300
-via-rose-200
-to-amber-100
-          "
-        />
+        <>
+  {/* Background Spine */}
 
+  <div
+    className="
+      hidden
+      md:block
+      absolute
+      left-1/2
+      top-0
+      bottom-0
+      w-px
+      -translate-x-1/2
+      bg-white/10
+    "
+  />
+
+  {/* Animated Fill Spine */}
+
+  <motion.div
+    style={{
+      scaleY,
+      transformOrigin: "top",
+    }}
+    className="
+      hidden
+      md:block
+      absolute
+      left-1/2
+      top-0
+      bottom-0
+      w-px
+      -translate-x-1/2
+      bg-gradient-to-b
+      from-rose-300
+      via-rose-200
+      to-amber-100
+    "
+  />
+</>
         {timelineEvents.map((event, index) => (
           <TimelineEvent
             key={event.year}

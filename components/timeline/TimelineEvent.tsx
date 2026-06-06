@@ -124,6 +124,9 @@ export default function TimelineEvent({
           scale: 1,
           opacity: 1,
         }}
+        whileHover={{
+    scale: 1.15,
+  }}
         viewport={{
           once: false,
           amount: 0.35,
@@ -176,14 +179,28 @@ export default function TimelineEvent({
             />
           </motion.div>
         ) : (
-          <div
-            className="
-              h-5
-              w-5
-              rounded-full
-              bg-rose-300
-            "
-          />
+          <div className="relative">
+  <div
+    className="
+      absolute
+      inset-0
+      rounded-full
+      bg-rose-300/40
+      blur-md
+      scale-150
+    "
+  />
+
+  <div
+    className="
+      relative
+      h-5
+      w-5
+      rounded-full
+      bg-rose-300
+    "
+  />
+</div>
         )}
       </motion.div>
     </motion.div>

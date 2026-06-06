@@ -5,15 +5,17 @@ import { motion } from "framer-motion";
 type SectionConnectorProps = {
   title: string;
   subtitle: string;
+  description: string;
 };
 
 export default function SectionConnector({
   title,
   subtitle,
+  description,
 }: SectionConnectorProps) {
   return (
     <section className="relative py-32 md:py-40 overflow-hidden">
-      {/* Subtle center highlight */}
+      {/* Subtle Atmosphere */}
       <div
         className="
           absolute
@@ -40,7 +42,7 @@ export default function SectionConnector({
           px-6
         "
       >
-        {/* Luxury divider */}
+        {/* Luxury Divider */}
         <div
           className="
             w-px
@@ -59,7 +61,7 @@ export default function SectionConnector({
             uppercase
             tracking-[0.4em]
             text-[10px]
-            text-[#b68d40]
+            text-rosegold
             mb-5
           "
         >
@@ -70,14 +72,28 @@ export default function SectionConnector({
           className="
             text-3xl
             md:text-5xl
-            font-light
-            tracking-tight
-            text-white
+            font-serif
+            text-champagne
             leading-[1.15]
           "
         >
           {title}
         </h2>
+
+        <p
+          className="
+            mt-8
+            max-w-2xl
+            mx-auto
+            text-champagne/70
+            text-base
+            md:text-lg
+            leading-relaxed
+            font-light
+          "
+        >
+          {description}
+        </p>
 
         <div
           className="

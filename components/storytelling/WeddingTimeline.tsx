@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import TimelineEvent from "@/components/timeline/TimelineEvent";
 import { timelineEvents } from "@/components/timeline/timelineData";
 
@@ -12,14 +15,29 @@ export default function WeddingTimeline() {
     >
       {/* Intro */}
 
-      <div
-        className="
-          max-w-3xl
-          mx-auto
-          text-center
-          mb-32
-        "
-      >
+      <motion.div
+  initial={{
+    opacity: 0,
+    y: 40,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: false,
+    amount: 0.4,
+  }}
+  transition={{
+    duration: 1,
+  }}
+  className="
+    max-w-3xl
+    mx-auto
+    text-center
+    mb-32
+  "
+>
         <p
           className="
             uppercase
@@ -55,7 +73,7 @@ export default function WeddingTimeline() {
           Every great love story is written one moment at a time. These are
           the milestones that shaped ours.
         </p>
-      </div>
+      </motion.div>
 
       {/* Timeline Container */}
 

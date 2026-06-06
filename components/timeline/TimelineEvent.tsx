@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 type TimelineEventProps = {
   year: string;
   title: string;
@@ -13,18 +17,39 @@ export default function TimelineEvent({
   isLast = false,
   align,
 }: TimelineEventProps) {
+  const initialX = align === "left" ? -40 : 40;
+
   return (
-    <div
-      className={`
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: initialX,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+        y: 0,
+      }}
+      viewport={{
+        once: false,
+        amount: 0.35,
+      }}
+      transition={{
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
         relative
         grid
         md:grid-cols-2
         gap-12
         items-center
         py-24
-      `}
+      "
     >
-      {/* Left Side */}
+      {/* Content Side */}
+
       <div
         className={`
           ${align === "left" ? "md:text-right" : "md:order-2"}
@@ -65,11 +90,29 @@ export default function TimelineEvent({
         </p>
       </div>
 
-      {/* Empty Side */}
+      {/* Empty Column */}
+
       <div />
 
       {/* Timeline Marker */}
-      <div
+
+      <motion.div
+        initial={{
+          scale: 0.6,
+          opacity: 0,
+        }}
+        whileInView={{
+          scale: 1,
+          opacity: 1,
+        }}
+        viewport={{
+          once: false,
+          amount: 0.35,
+        }}
+        transition={{
+          duration: 0.6,
+          delay: 0.15,
+        }}
         className="
           hidden
           md:block
@@ -113,7 +156,7 @@ export default function TimelineEvent({
             "
           />
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

@@ -53,7 +53,7 @@ export default function ChapterTransition({
           y: 0,
         }}
         viewport={{
-          once: true,
+          once: false,
           amount: 0.6,
         }}
         transition={{

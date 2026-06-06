@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { GalleryItem } from "./GalleryData";
+import { useRef } from "react";
 
 interface Props {
   item: GalleryItem;
@@ -13,12 +14,29 @@ export default function GalleryCard({
   item,
   large = false,
 }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const imageY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    large ? [-20, 20] : [20, -20]
+  );
+
   return (
     <motion.article
+      ref={ref}
       initial={{ opacity: 0, y: 80 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
+      viewport={{ once: false, margin: "-10%" }}
+      transition={{
+        duration: 0.8,
+        ease: "easeOut",
+      }}
       whileHover={{ y: -8 }}
       className="group"
     >
@@ -36,20 +54,30 @@ export default function GalleryCard({
         <div
           className={`
             relative overflow-hidden
-            ${large ? "aspect-[4/5]" : "aspect-[4/4]"}
+            ${large ? "aspect-[4/5]" : "aspect-square"}
           `}
         >
           <motion.div
+            style={{ y: imageY }}
             whileHover={{ scale: 1.04 }}
             transition={{ duration: 0.8 }}
-            className="h-full w-full"
+            className="
+              absolute
+              inset-0
+              h-full
+              w-full
+            "
           >
             <Image
               src={item.image}
               alt={item.title}
               width={1200}
               height={1500}
-              className="h-full w-full object-cover"
+              className="
+                h-full
+                w-full
+                object-cover
+              "
             />
           </motion.div>
         </div>

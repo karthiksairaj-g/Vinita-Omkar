@@ -2,7 +2,7 @@ import StoryChapter from "./StoryChapter";
 import ChapterTransition from "./ChapterTransition";
 import WeddingTimeline from "./WeddingTimeline";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
-
+import SectionConnector from "@/components/animations/SectionConnector";
 
 export default function ScrollNarrative() {
   return (
@@ -72,9 +72,18 @@ export default function ScrollNarrative() {
                 outro="Their story continues beyond this moment, one beautiful chapter at a time."
               />
       
+            <SectionConnector
+              subtitle="Memories"
+              title="Every Story Leaves Behind Beautiful Moments"
+            />
 
             {/* Gallary Grid*/ }
             <GalleryGrid />
+
+            <SectionConnector
+              subtitle="Memories"
+              title="Every Story Leaves Behind Beautiful Moments"
+            />
 
             {/* Timeline */}
             <WeddingTimeline />

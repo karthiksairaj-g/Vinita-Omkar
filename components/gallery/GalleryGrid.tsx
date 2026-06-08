@@ -2,6 +2,8 @@
 
 import GalleryCard from "./GalleryCard";
 import { galleryItems } from "./GalleryData";
+import { motion } from "framer-motion";
+import { MOTION } from "@/lib/motion";
 
 export default function GalleryGrid() {
   return (
@@ -79,7 +81,26 @@ export default function GalleryGrid() {
                   </div>
 
                   <div className="lg:col-span-5">
-                    <div className="max-w-md mx-auto">
+                    <motion.div
+  initial={{
+    opacity: 0,
+    y: MOTION.distance.normal,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: false,
+    amount: 0.3,
+  }}
+  transition={{
+    delay: 0.15,
+    duration: MOTION.duration.section,
+    ease: MOTION.ease,
+  }}
+  className="max-w-md mx-auto"
+>
                       <p
                         className="
                           text-white/50
@@ -98,13 +119,32 @@ export default function GalleryGrid() {
                       <p className="mt-6 text-white/70 leading-relaxed">
                         {item.quote}
                       </p>
-                    </div>
+                    </motion.div>
                   </div>
                 </>
               ) : (
                 <>
                   <div className="lg:col-span-5 order-2 lg:order-1">
-                    <div className="max-w-md mx-auto">
+                   <motion.div
+  initial={{
+    opacity: 0,
+    y: MOTION.distance.normal,
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+  }}
+  viewport={{
+    once: false,
+    amount: 0.3,
+  }}
+  transition={{
+    delay: 0.15,
+    duration: MOTION.duration.section,
+    ease: MOTION.ease,
+  }}
+  className="max-w-md mx-auto"
+>
                       <p
                         className="
                           text-white/50
@@ -123,7 +163,7 @@ export default function GalleryGrid() {
                       <p className="mt-6 text-white/70 leading-relaxed">
                         {item.quote}
                       </p>
-                    </div>
+                    </motion.div>
                   </div>
 
                   <div className="lg:col-span-7 order-1 lg:order-2">

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MOTION } from "@/lib/motion";
 
 type SectionConnectorProps = {
   title: string;
@@ -30,8 +31,8 @@ export default function SectionConnector({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false }}
         transition={{
-          duration: 1,
-          ease: [0.22, 1, 0.36, 1],
+          duration: MOTION.duration.content,
+          ease: MOTION.ease,
         }}
         className="
           relative

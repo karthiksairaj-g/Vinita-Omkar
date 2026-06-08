@@ -5,6 +5,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 
 import TimelineEvent from "@/components/timeline/TimelineEvent";
 import { timelineEvents } from "@/components/timeline/timelineData";
+import { MOTION } from "@/lib/motion";
 
 export default function WeddingTimeline() {
 
@@ -35,9 +36,9 @@ export default function WeddingTimeline() {
 
       <motion.div
   initial={{
-    opacity: 0,
-    y: 40,
-  }}
+  opacity: 0,
+  y: MOTION.distance.normal,
+}}
   whileInView={{
     opacity: 1,
     y: 0,
@@ -47,8 +48,9 @@ export default function WeddingTimeline() {
     amount: 0.4,
   }}
   transition={{
-    duration: 1,
-  }}
+  duration: MOTION.duration.content,
+  ease: MOTION.ease,
+}}
   className="
     max-w-3xl
     mx-auto

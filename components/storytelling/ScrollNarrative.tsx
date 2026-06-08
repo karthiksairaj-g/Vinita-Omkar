@@ -73,17 +73,19 @@ export default function ScrollNarrative() {
               />
       
             <SectionConnector
-              subtitle="Memories"
-              title="Every Story Leaves Behind Beautiful Moments"
-            />
+  subtitle="Memories"
+  title="Every Story Leaves Behind Beautiful Moments"
+  description="Some moments pass in an instant, yet remain in our hearts forever. These photographs capture the laughter, the celebrations, and the quiet memories that shaped Vinita and Omkar's journey together."
+/>
 
             {/* Gallary Grid*/ }
             <GalleryGrid />
 
             <SectionConnector
-              subtitle="Memories"
-              title="Every Story Leaves Behind Beautiful Moments"
-            />
+  subtitle="The Journey"
+  title="Every Chapter Led To This Day"
+  description="Behind every celebration lies a collection of milestones, promises, and unforgettable moments. Together they tell the story of two lives gradually becoming one."
+/>
 
             {/* Timeline */}
             <WeddingTimeline />

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { GalleryItem } from "./GalleryData";
 import { useRef } from "react";
-
+import { MOTION } from "@/lib/motion";
 interface Props {
   item: GalleryItem;
   large?: boolean;
@@ -30,12 +30,18 @@ export default function GalleryCard({
   return (
     <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 80 }}
-      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, margin: "-10%" }}
+      initial={{
+        opacity: 0,
+        y: MOTION.distance.large,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
       transition={{
-        duration: 0.8,
-        ease: "easeOut",
+        duration: MOTION.duration.card,
+        ease: MOTION.ease,
       }}
       whileHover={{ y: -8 }}
       className="group"
@@ -60,7 +66,10 @@ export default function GalleryCard({
           <motion.div
             style={{ y: imageY }}
             whileHover={{ scale: 1.04 }}
-            transition={{ duration: 0.8 }}
+            transition={{
+              duration: MOTION.duration.card,
+              ease: MOTION.ease,
+            }}
             className="
               absolute
               inset-0

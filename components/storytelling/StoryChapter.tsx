@@ -5,7 +5,7 @@ import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@/hooks/useGSAP";
 import ParallaxLayer from "./ParallaxLayer";
 import MemoryArtifacts from "./MemoryArtifacts";
-
+import { MOTION } from "@/lib/motion";
 
 interface StoryChapterProps {
   title: string;
@@ -54,8 +54,8 @@ export default function StoryChapter({
       if (subtitleElement) {
         gsap.from(subtitleElement, {
           opacity: 0,
-          y: 30,
-          duration: 1,
+          y: MOTION.distance.subtle,
+          duration: MOTION.duration.content,
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
@@ -67,8 +67,8 @@ export default function StoryChapter({
       if (titleElement) {
         gsap.from(titleElement, {
           opacity: 0,
-          y: 80,
-          duration: 1.4,
+          y: MOTION.distance.large,
+          duration: MOTION.duration.cinematic,
           ease: "power4.out",
           scrollTrigger: {
             trigger: section,
@@ -80,8 +80,8 @@ export default function StoryChapter({
       if (introElement) {
         gsap.from(introElement, {
           opacity: 0,
-          y: 40,
-          duration: 1.2,
+          y: MOTION.distance.normal,
+          duration: MOTION.duration.section,
           ease: "power3.out",
           scrollTrigger: {
             trigger: introElement,
@@ -93,7 +93,7 @@ export default function StoryChapter({
       if (memoryElement) {
         gsap.from(memoryElement, {
           opacity: 0,
-          y: 80,
+          y: MOTION.distance.large,
           duration: 1.5,
           ease: "power4.out",
           scrollTrigger: {
@@ -106,8 +106,8 @@ export default function StoryChapter({
       if (outroElement) {
         gsap.from(outroElement, {
           opacity: 0,
-          y: 40,
-          duration: 1.2,
+          y: MOTION.distance.normal,
+          duration: MOTION.duration.section,
           ease: "power3.out",
           scrollTrigger: {
             trigger: outroElement,
@@ -119,9 +119,9 @@ export default function StoryChapter({
       if (mediaElement) {
         gsap.from(mediaElement, {
           opacity: 0,
-          scale: 0.9,
-          y: 120,
-          duration: 1.8,
+          scale: MOTION.scale.cinematic,
+          y: MOTION.distance.dramatic,
+          duration: MOTION.duration.reveal,
           ease: "power4.out",
           scrollTrigger: {
             trigger: mediaElement,

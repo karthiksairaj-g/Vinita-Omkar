@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MOTION } from "@/lib/motion";
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ export default function ChapterTransition({
         overflow-hidden
       "
     >
+      {/* Ambient Glow */}
       <div
         className="
           absolute
@@ -43,26 +45,26 @@ export default function ChapterTransition({
         />
       </div>
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 40,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: false,
-          amount: 0.6,
-        }}
-        transition={{
-          duration: 1.4,
-          ease: "easeOut",
-        }}
-        className="relative z-10 text-center"
-      >
-        <p
+      <div className="relative z-10 text-center">
+        {/* Section Label */}
+
+        <motion.p
+          initial={{
+            opacity: 0,
+            y: MOTION.distance.subtle,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: false,
+            amount: 0.6,
+          }}
+          transition={{
+            duration: MOTION.duration.content,
+            ease: MOTION.ease,
+          }}
           className="
             uppercase
             tracking-[0.35em]
@@ -72,9 +74,28 @@ export default function ChapterTransition({
           "
         >
           The Story Continues
-        </p>
+        </motion.p>
 
-        <h2
+        {/* Chapter Title */}
+
+        <motion.h2
+          initial={{
+            opacity: 0,
+            y: MOTION.distance.normal,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: false,
+            amount: 0.6,
+          }}
+          transition={{
+            delay: 0.15,
+            duration: MOTION.duration.cinematic,
+            ease: MOTION.ease,
+          }}
           className="
             text-5xl
             md:text-7xl
@@ -83,8 +104,8 @@ export default function ChapterTransition({
           "
         >
           {title}
-        </h2>
-      </motion.div>
+        </motion.h2>
+      </div>
     </section>
   );
 }

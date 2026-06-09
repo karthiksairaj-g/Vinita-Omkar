@@ -4,6 +4,7 @@ import WeddingTimeline from "./WeddingTimeline";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import SectionConnector from "@/components/animations/SectionConnector";
 import FinalePromise from "@/components/finale/FinalePromise";
+import FinaleReveal from "@/components/finale/FinaleReveal";
 
 export default function ScrollNarrative() {
   return (
@@ -92,6 +93,8 @@ export default function ScrollNarrative() {
             <WeddingTimeline />
 
             <FinalePromise />
+
+            <FinaleReveal />
     </>
   );
 }

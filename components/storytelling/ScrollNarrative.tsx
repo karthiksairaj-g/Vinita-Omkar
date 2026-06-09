@@ -5,6 +5,7 @@ import GalleryGrid from "@/components/gallery/GalleryGrid";
 import SectionConnector from "@/components/animations/SectionConnector";
 import FinalePromise from "@/components/finale/FinalePromise";
 import FinaleReveal from "@/components/finale/FinaleReveal";
+import FinaleClimax from "@/components/finale/FinaleClimax";
 
 export default function ScrollNarrative() {
   return (
@@ -95,6 +96,8 @@ export default function ScrollNarrative() {
             <FinalePromise />
 
             <FinaleReveal />
+
+            <FinaleClimax />
     </>
   );
 }

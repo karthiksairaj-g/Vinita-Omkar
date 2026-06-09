@@ -3,6 +3,7 @@ import ChapterTransition from "./ChapterTransition";
 import WeddingTimeline from "./WeddingTimeline";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import SectionConnector from "@/components/animations/SectionConnector";
+import FinalePromise from "@/components/finale/FinalePromise";
 
 export default function ScrollNarrative() {
   return (
@@ -89,6 +90,8 @@ export default function ScrollNarrative() {
 
             {/* Timeline */}
             <WeddingTimeline />
+
+            <FinalePromise />
     </>
   );
 }

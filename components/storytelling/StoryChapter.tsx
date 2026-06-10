@@ -228,13 +228,14 @@ export default function StoryChapter({
               className="
                 chapter-memory
                 mt-24
-                rounded-[32px]
+                rounded-[40px]
                 border
-                border-white/10
-                bg-white/[0.03]
-                backdrop-blur-sm
-                px-10
-                py-16
+                border-white/5
+                bg-white/[0.015]
+                backdrop-blur-[2px]
+                px-12
+                md:px-20
+                py-20
                 text-center
                 shadow-[0_0_80px_rgba(255,215,180,0.08)]
               "
@@ -245,7 +246,8 @@ export default function StoryChapter({
                     uppercase
                     tracking-[0.35em]
                     text-rosegold
-                    text-xs
+                    text-[11px]
+                    font-light
                   "
                 >
                   {memoryLabel}
@@ -253,18 +255,33 @@ export default function StoryChapter({
               )}
 
               {memoryCaption && (
-                <p
-                  className="
-                    mt-6
-                    text-4xl
-                    md:text-5xl
-                    font-serif
-                    text-ivory
-                    leading-[1.25]
-                  "
-                >
-                  {memoryCaption}
-                </p>
+                <>
+                  <p
+                    className="
+                      mt-6
+                      text-4xl
+                      md:text-6xl
+                      font-serif
+                      text-ivory
+                      leading-[1.25]
+                    "
+                  >
+                    {memoryCaption}
+                  </p>
+
+                  <div
+                    className="
+                      mt-10
+                      mx-auto
+                      h-px
+                      w-24
+                      bg-gradient-to-r
+                      from-transparent
+                      via-rosegold/50
+                      to-transparent
+                    "
+                  />
+                </>
               )}
             </div>
           </ParallaxLayer>

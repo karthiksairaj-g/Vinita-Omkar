@@ -199,7 +199,7 @@ export default function StoryChapter({
             md:text-7xl
             font-serif
             text-ivory
-            leading-tight
+            leading-[1.08]
           "
         >
           {title}
@@ -211,9 +211,11 @@ export default function StoryChapter({
               chapter-intro
               mt-12
               text-xl
-              leading-10
+              md:text-[1.4rem]
+              leading-[2.3rem]
               text-neutral-300
-              max-w-3xl
+              max-w-2xl
+              font-light
             "
           >
             {intro}
@@ -258,6 +260,7 @@ export default function StoryChapter({
                     md:text-5xl
                     font-serif
                     text-ivory
+                    leading-[1.25]
                   "
                 >
                   {memoryCaption}
@@ -273,9 +276,11 @@ export default function StoryChapter({
               chapter-outro
               mt-24
               text-xl
-              leading-10
+              md:text-[1.4rem]
+              leading-[2.3rem]
               text-neutral-300
-              max-w-3xl
+              max-w-2xl
+              font-light
             "
           >
             {outro}
@@ -285,7 +290,6 @@ export default function StoryChapter({
         <ParallaxLayer speed={0.12}>
           <MemoryArtifacts />
         </ParallaxLayer>
-        
       </div>
     </section>
   );

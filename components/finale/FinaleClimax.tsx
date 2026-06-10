@@ -23,6 +23,38 @@ export default function FinaleClimax() {
           text-center
         "
       >
+        {/* Cinematic Divider */}
+
+        <motion.div
+          initial={{
+            opacity: 0,
+            scaleX: 0,
+          }}
+          whileInView={{
+            opacity: 1,
+            scaleX: 1,
+          }}
+          viewport={{
+            once: false,
+            amount: 0.35,
+          }}
+          transition={{
+            duration: MOTION.duration.content,
+            ease: MOTION.ease,
+          }}
+          className="
+            mx-auto
+            mb-16
+            h-px
+            w-24
+            bg-gradient-to-r
+            from-transparent
+            via-rosegold/50
+            to-transparent
+            origin-center
+          "
+        />
+
         <motion.h2
           initial={{
             opacity: 0,
@@ -41,13 +73,13 @@ export default function FinaleClimax() {
             ease: MOTION.ease,
           }}
           className="
-            text-5xl
-            md:text-7xl
-            lg:text-8xl
+            text-6xl
+            md:text-8xl
+            lg:text-9xl
             font-light
             tracking-tight
             text-white
-            leading-[1.05]
+            leading-[1.03]
           "
         >
           Forever Starts Now
@@ -72,9 +104,9 @@ export default function FinaleClimax() {
             ease: MOTION.ease,
           }}
           className="
-            mt-20
+            mt-24
             space-y-8
-            max-w-3xl
+            max-w-2xl
             mx-auto
             text-neutral-300
             text-xl
